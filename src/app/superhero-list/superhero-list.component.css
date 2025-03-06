@@ -1,0 +1,386 @@
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: #3f51b5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.search-container {
+  margin-bottom: 2rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 600px;
+}
+
+.search-type-selector {
+  position: relative;
+}
+
+.search-type-selector select {
+  height: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 2rem;
+}
+
+.search-type-selector::after {
+  content: "▼";
+  font-size: 0.8rem;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
+}
+
+.search-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.search-type-info {
+  color: #888;
+}
+
+.search-type-info.active {
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.search-btn {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.search-btn:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.clear-btn {
+  background-color: #757575;
+  color: white;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background-color: #616161;
+}
+
+.retry-btn {
+  background-color: #4caf50;
+  color: white;
+  margin-top: 1rem;
+}
+
+.retry-btn:hover:not(:disabled) {
+  background-color: #388e3c;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3f51b5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.hero-count {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.hero-count-note {
+  font-size: 0.9rem;
+  color: #777;
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.hero-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card-image {
+  height: 300px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.card-id {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.card-publisher {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.view-btn {
+  display: inline-block;
+  background-color: #3f51b5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.view-btn:hover {
+  background-color: #303f9f;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.pagination-btn {
+  background-color: #3f51b5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #303f9f;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page-number {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 0;
+}
+
+.page-number.active {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.page-number:hover:not(.active):not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .search-box {
+    flex-direction: column;
+  }
+  
+  .hero-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .page-numbers {
+    display: none;
+  }
+  
+  .pagination {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.loading-indicator {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Skeleton UI styles */
+.skeleton {
+  background-color: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-image {
+  height: 300px;
+  background-color: #e0e0e0;
+}
+
+.skeleton-title {
+  height: 24px;
+  margin-bottom: 12px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: 12px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  width: 80%;
+}
+
+.skeleton-button {
+  height: 36px;
+  width: 100px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+/* Remove these publisher-related styles */
+.publisher-search-message,
+.publisher-search-message p,
+.loading-note,
+.loading-more-indicator {
+  display: none;
+} 

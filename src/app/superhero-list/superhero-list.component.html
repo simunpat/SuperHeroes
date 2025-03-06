@@ -1,0 +1,103 @@
+<div class="container">
+  <h1>Superheroes</h1>
+  
+  <div class="search-container">
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Search by name or ID..." 
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="searchHeroes()"
+      >
+      <div class="search-type-selector">
+        <select [(ngModel)]="searchType">
+          <option value="name">Name</option>
+          <option value="id">ID</option>
+        </select>
+      </div>
+      <button class="search-btn" (click)="searchHeroes()">Search</button>
+      <button class="clear-btn" (click)="clearSearch()">Clear</button>
+    </div>
+    <div class="search-info">
+      <p>
+        Search by 
+        <span class="search-type-info" [class.active]="searchType === 'name'">hero name (e.g., "Batman")</span> or 
+        <span class="search-type-info" [class.active]="searchType === 'id'">ID (e.g., "123")</span>
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="heroes.length === 0 && !loading && !error" class="empty-state">
+    <p>No heroes found. Try searching for a hero by name or ID.</p>
+    <button class="retry-btn" (click)="loadHeroes()">Load Default Heroes</button>
+  </div>
+
+  <div class="hero-count" *ngIf="heroes.length > 0 && !loading">
+    Showing {{ startIndex + 1 }}-{{ endIndex }} of {{ heroes.length }} heroes
+    <span class="hero-count-note" *ngIf="!searchTerm">(Showing first 9 heroes from the API)</span>
+  </div>
+
+  <!-- Show skeleton UI while loading -->
+  <div class="hero-grid" *ngIf="loading">
+    <div class="hero-card skeleton" *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+      <div class="card-image skeleton-image"></div>
+      <div class="card-content">
+        <div class="skeleton-title"></div>
+        <div class="skeleton-text"></div>
+        <div class="skeleton-text"></div>
+        <div class="skeleton-button"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show actual heroes when loaded -->
+  <div class="hero-grid" *ngIf="heroes.length > 0 && !loading">
+    <div class="hero-card" *ngFor="let hero of paginatedHeroes">
+      <div class="card-image">
+        <img 
+          [src]="hero.image?.url" 
+          alt="{{ hero.name }}"
+          onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
+        >
+      </div>
+      <div class="card-content">
+        <h2 class="card-title">{{ hero.name }}</h2>
+        <p class="card-id">ID: {{ hero.id }}</p>
+        <a [routerLink]="['/hero', hero.id]" class="view-btn">View Details</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination" *ngIf="heroes.length > pageSize">
+    <button 
+      class="pagination-btn" 
+      [disabled]="currentPage === 1" 
+      (click)="goToPage(currentPage - 1)"
+    >
+      Previous
+    </button>
+    
+    <div class="page-numbers">
+      <button 
+        *ngFor="let page of getPageNumbers()" 
+        class="page-number" 
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+    </div>
+    
+    <button 
+      class="pagination-btn" 
+      [disabled]="currentPage === totalPages" 
+      (click)="goToPage(currentPage + 1)"
+    >
+      Next
+    </button>
+  </div>
+</div> 
